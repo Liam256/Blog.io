@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Various Developments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Various Developments">
+<meta property="og:url" content="https://liam256.github.io/blog.io/index.html">
+<meta property="og:site_name" content="Various Developments">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Various Developments">
+  
+    <link rel="alternate" href="/atom.xml" title="Various Developments" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog.io/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog.io/" id="logo">Various Developments</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog.io/">Home</a>
+        
+          <a class="main-nav-link" href="/blog.io/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog.io/projects">Projects</a>
+        
+          <a class="main-nav-link" href="/blog.io/about">About</a>
+        
+      </nav>
+    
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Monogame-Billboarding" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Billboarding/" class="article-date">
+  <time datetime="2017-01-05T23:51:47.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Monogame-Billboarding/">Monogame - Billboarding</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is an incredibly easy thing to do using Monogame.  As an example of what is meant by billboarding, check the image below:</p>
+<img src="/blog.io/2017/01/05/Monogame-Billboarding/monogame_billboarding1.png" alt="." title=".">
+<p>The scene is in full 3D but instead of using 3D models, I opted for Sprites that always face the camera/player.  Used in old 3D games such as Wolfenstein it is nothing new.  It is not solely what this is used for either.  In larger 3D games, billboards can be used as substitutes for 3D models on objects that are far away.  Scenes with large rolling hills and forests upon them for an example.  A tree can be a billboard beyond a certain distance.</p>
+<p>Monogame provides a static function for creating a billboard matrix. Simply substitute your typical 3D world/model matrix for the billboard matrix and you have your 2D sprite in a 3D world.</p>
+<img src="/blog.io/2017/01/05/Monogame-Billboarding/monogame_billboarding2.png" alt="." title=".">
+<p>The above image shows the function used to draw the goblin in the previous image.  The rotation matrix is omitted and where you would use the usual 3D model matrix, use Matrix.CreateBillboard(ObjectPosition, PositionOfViewer/Camera,UpVector, DirectionOfViewer/Camera).</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Monogame-Simple2dcollision" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Simple2dcollision/" class="article-date">
+  <time datetime="2017-01-05T23:51:38.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Monogame-Simple2dcollision/">Monogame - Simple 2D Collision</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>My dungeon crawler game, like any other needed collision detection for many aspects of the gameplay.  Hit detection, walls, activating doors etc.  Even though it is in 3D, due to it being a prototype I kept it simple in the 2D world.  Having said that I didn’t, realise how easy it was as I was rolling my own before checking out how Monogame does it.  Here we go.</p>
+<p>1.Add a BoundingBox as a member to whichever class, component, entity etc. you wish to have collision detection.</p>
+<img src="/blog.io/2017/01/05/Monogame-Simple2dcollision/monogame_collision1.png" alt="." title=".">
+<p>I chose the constructor that took two points as parameters, ‘min’ and ‘max’.  It is really important, and probably obvious, but the ‘min’ value MUST be less than the max.  You may think ‘duh’ but if you rotate the BoundingBox, the min value may not be the minimum anymore, so just watch out for that.</p>
+<p>2.Create a function for checking if something has hit something else.  There are a multitude of collision functions on bounding box.  Intersecting, rays, overlapping and points.  I chose to use a point for basic door collision.  This point is calculated by using the same calculation for moving.  Workout the new position, pass it to this method.  If it returns true, move else don’t.</p>
+<img src="/blog.io/2017/01/05/Monogame-Simple2dcollision/monogame_collision2.png" alt="." title=".">
+<p>The above image shows one of my collision functions.  It also doubles for activation, which is what the “isCollisionCheck” parameter is used for.  That can be ignored for this example.</p>
+<p>To utilize the BoundingBox functions simply compare the return of the ‘Contains()’ method with the Monogame enum ‘ContainmentType’.  There are a few, but here ‘Intersects’ was chosen.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Monogame-Fpsmouselook" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Fpsmouselook/" class="article-date">
+  <time datetime="2017-01-05T23:51:30.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Monogame-Fpsmouselook/">Monogame - First-person Camera mouse-look</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>So the other post on fps cameras covered how to do the rotations of the view.  This post covers handling the mouse input to move the fps camera.</p>
+<p>The methodolgy for the mouse-look is much like the keyboard input post. The difference being that instead of storing the last state, you store an original state of the mouse.  I.e. a position which is used to compare to the current mouse position.</p>
+<p>The first person camera rotation has to be reactive to the amount moved by the player. Ie, they move the mouse a little bit, the camera moves a little etc.  Its no good having it rotate at a constant rate.</p>
+<ol>
+<li>Set the mouse pointer to the center of the screen and store this as the originalState of the mouse.  I did this in my Initialize function.</li>
+</ol>
+<img src="/blog.io/2017/01/05/Monogame-Fpsmouselook/monogame_mouselook1.png" alt="." title=".">
+<ol>
+<li>Then where player input is checked, like with the keyboard, we store the new, current state of the mouse.  Once stored, check if the state has changed, if it has calculate the difference between the mouse positions and rotate the camera by that amount on the relevent axis</li>
+</ol>
+<img src="/blog.io/2017/01/05/Monogame-Fpsmouselook/monogame_mouselook2.png" alt="." title=".">
+<ol>
+<li>Finally, reset the mouse back to its original position at the end of the function where input is checked.</li>
+</ol>
+<img src="/blog.io/2017/01/05/Monogame-Fpsmouselook/monogame_mouselook3.png" alt="." title=".">
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Monogame-Keyboardonrelease" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/" class="article-date">
+  <time datetime="2017-01-05T23:51:23.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/">Monogame - Keyboard Input On-Release</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Monogame doesn’t provide an onRelease type function for the keyboard input.  What this means is that pressing a key to receive one, single input can be a pain.</p>
+<p>For example, in my dungeon crawler game, if opening a door I don’t want to have it activate more than once as the activate toggles.  So if the door is closed, it will open and vice versa. If you don’t limit the activation to a single instance (like once a key has been released) it becomes luck as to whether the door stays open on activation.</p>
+<p>Monogame provides states for its various inputs.  By storing the old state of the keyboard you can check if the key was pressed and now released.</p>
+<p>1.At the top of the function you take input, store the new state to a local KeyboardState variable</p>
+<img src="/blog.io/2017/01/05/Monogame-Keyboardonrelease/monogame_input1.png" alt="." title=".">
+<ol>
+<li>Create a class member to store the old state and at the end of the function, store the current new state to the old state.</li>
+</ol>
+<img src="/blog.io/2017/01/05/Monogame-Keyboardonrelease/monogame_input2.png" alt="." title=".">
+<ol>
+<li>Then where you check which key is pressed (between the new and old state), compare the new state to the old state</li>
+</ol>
+<img src="/blog.io/2017/01/05/Monogame-Keyboardonrelease/monogame_input3.png" alt="." title=".">
+<p>And there you have an onReleaseKey type function.  It checks if the key was pressed last run and if the key is now up.  This stops you having multiple, unintended actions happening.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Monogame-Fpscamera" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Fpscamera/" class="article-date">
+  <time datetime="2017-01-05T23:51:15.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Monogame-Fpscamera/">Monogame - Simple First-person Camera</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Full disclaimer: This is not how anyone should be using quaternions.  The dungeon-crawler game is simply a learning/prototype project and I needed to get this working.  This is just a means of using a basic understanding of how to manipulate quaternions to do what was needed.</p>
+<p>Quaternions…I kind of understand them but not really.  I understand them enough to achieve what I want done.  Eventually after studying them I’ll get it I’m sure but for now I’ll continue in ignorance.</p>
+<img src="/blog.io/2017/01/05/Monogame-Fpscamera/monogame_1.png" alt="." title=".">
+<p>A simple fps cam is suprisingly involved.  Originally for simplicity this game did not use mouse-look but when I realised that it was worth the effort I implemented it.</p>
+<img src="/blog.io/2017/01/05/Monogame-Fpscamera/monogame_fps1.png" alt="." title=".">
+<p>The above image shows my (probably wrong) camera class.  But it works.  Essentially I store to two rotations for looking up-down and left-right in seperate quaternions (lines 16-17).</p>
+<p>When the player wants to rotate in particular direction, this is simply added to the relevent quaternion representing an axis, using the functions on lines 32 and 38.</p>
+<p>Multiplying two quaternions essentially adds the rotations together.  What this means is that when before passing the camera matrix to the shader, you simply create a rotation matrix from the two quaternions multiplied together (line 29). You then multiply your view matrix by the rotation matrix and voila.</p>
+<p>The pitch angle (up-down) is stored to limit the rotation from going too far either above or below.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Monogame-Contentpipeline" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Contentpipeline/" class="article-date">
+  <time datetime="2017-01-05T23:51:06.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Monogame-Contentpipeline/">Monogame - Content Pipeline (Sound effects)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little</p>
+<p>I was trying to added sound an didn’t think the format was supported.  I thought I had to use a .fx format but in fact the just simply wasn’t the case.</p>
+<p>Open the Content manager, write click and add existing item:</p>
+<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content1.png" alt="." title=".">
+<p>Once it is added, make sure to change the processor to sound effect, not song.  I kept getting an error that it was of the wrong object type when importing in my code.</p>
+<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content2.png" alt="." title=".">
+<p>Then its simply a case of calling the Content.Load:</p>
+<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content3.png" alt="." title=".">
+<p>Essentially make sure that the <t>  and string name is the same as in the content manager and it should all work no problems.  With SoundEffects, to use them you should really make an instance of them using the built-in CreateInstance() function.  This is also how you can manipulate an individual sound effect’s volume etc.</t></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Monogame-Rendering3d" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Rendering3d/" class="article-date">
+  <time datetime="2017-01-05T23:50:56.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Monogame-Rendering3d/">Monogame - Rendering 3D with alpha blending and multiple render targets</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Whilst creating my 3D dungeon crawler I came into a few issues.  These were all nothing to do with Monogame itself.  It is a fantastic framework.  The issues were with how to order my drawing calls and render to multiple RenderTargets.</p>
+<img src="/blog.io/2017/01/05/Monogame-Rendering3d/monogame_1.png" alt="." title=".">
+<p>The above image shows my incredibly basic 3d dungeon crawler.  I wanted to have a map (top-left) and I didn’t want to have to create extra graphics.  So I decided to use another render target using another camera.</p>
+<p>To do this I needed another RenderTarget2D (essentially a framebuffer) and draw the view from an camera overhead.  There were a few things, though, that needed to be considerered:</p>
+<ol>
+<li>When you switch render targets, monogame will clear it without clear having to be called.  What this means, is that all drawing done previously is wiped.</li>
+<li>Setting the rendertarget to null means that the default backbuffer will be set.</li>
+<li>Any rasterizer states or stencil states will be preserved</li>
+</ol>
+<p>Another issue I had was with this was drawing the GUI using SpriteBatch.  What wasn’t plainly clear is that the SpriteBatch will change the DepthStencilState of the current GraphicsDevice.  What this mean was, I would draw in 3D and then notice that my geometry wasn’t being clipped or draw in the correct order (depth buffering).  Objects that should have been behind were being drawn in front.  To get around this, simply reset the DepthStencilState before drawing 3D geometry.</p>
+<img src="/blog.io/2017/01/05/Monogame-Rendering3d/monogame_2.png" alt="." title=".">
+<p>The image above demonstrates how to avoid the issues discussed.  The final thing to watch out for is Alphablending.  Make sure to draw objects with alpha channels last if possible else, those areas will be drawn over.</p>
+<img src="/blog.io/2017/01/05/Monogame-Rendering3d/monogame_3.png" alt="." title=".">
+<p>I decided for ease of development that my enemies would be sprites.  They are drawn no problems with no alphablending issues as they are drawn last.  The door behind though was drawn before the next room and so shows black between the bars instead of a clear view to the next room.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Godot-Animation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Godot-Animation/" class="article-date">
+  <time datetime="2017-01-05T23:50:40.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Godot-Animation/">Godot Engine - Simple Animation and instancing a Scene in another Scene</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Getting basic animations into Godot Engine is simple and a joy.  It is stupidly straight forward.</p>
+<p>So first off create a new scene and add an AnimatedSprite node.  If you can’t find it, just do a search:</p>
+<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate1.png" alt="." title=".">
+<p>On the right hand-side where the inspector is you’ll see “Frames <null>”, click it and select New SpriteFrames.</null></p>
+<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate2.png" alt="." title=".">
+<p>This should open up an animation panel at the bottom.  First though you need import your Sprites/images.  Importing them as Textures is not required but unless you do, the images will be filtered.  If you’re doing pixel art, then you’ll want to import them like so:</p>
+<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate3.png" alt="." title=".">
+<p>You’ll then be greeted with this popup:</p>
+<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate4.png" alt="." title=".">
+<p>Make sure you select 2D Texture and make sure to disable “Filter (Magnifying)”.  Leave the rest as is.  If you want, create a new folder to write the Textures to, but having them in the root of your res:// is fine too.</p>
+<p>Once this is done, simply select and drag the textures from the FileSystem browser into the Animation Frame at the bottom of the screen:</p>
+<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate5.png" alt="." title=".">
+<p>The image above shows that they will be part of an animation called “rotate”(red). You can create more animations by simply clicking the paper icon below animations (green).  The name given in the red box is how you can refer to different animations in your scripts.</p>
+<p>So now that the new animated node/scene has been created its just a matter of putting it into the main game scene. To do this, simply navigate back to the scene in which you want to put your new animated sprite/node/scene:</p>
+<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate6.png" alt="." title=".">
+<p>Clicking on the exisiting node you want to parent the instance node to, then click the icon highlighted in yellow in the scene tab.  Select the scene and press okay.</p>
+<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate7.png" alt="." title=".">
+<p>The newly animated scene has now been instanced in the level with the player object.  The yellow box shows where you can toggle the playing of the animation in the scene view.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Godot-Instancing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Godot-Instancing/" class="article-date">
+  <time datetime="2017-01-05T23:50:27.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Godot-Instancing/">Godot Engine - Parameterised Instancing</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>One thing that became very obvious upon moving past basic game ideas was that creating instances of objects with certain parameters was not an obvious thing to do.  In standard OO programming, you have a constructor and create your new object with the parameters you  do or don’t specify.</p>
+<p>In my game, I wanted to have a means of storing basic ship stats such as speed, weight etc. but finding how to do this without creating a node/script for every single ship type was putting me off using Godot.</p>
+<p>In essence its rather easy, the Autoload demo (here) shows you how in instancing the scene.</p>
+<img src="/2017/01/05/Godot-Instancing/godot_part3_1.png" alt="." title=".">
+<p>Simply create a function to set the parameters you require in a script.  In this case I wanted the player to hold the stats of their ship on their object/script.</p>
+<ol>
+<li>Create script with desired functions and data members</li>
+<li>Create a scene with a Node and attach the script to the node</li>
+<li>In the script where you want to hold the new type as a member create, a var to hold it</li>
+<li>In the _ready() function, load an instance of the scene containing your script and assign it to the member.</li>
+</ol>
+<p>Here is another image of the Player’s script to better demonstrate:</p>
+<img src="/2017/01/05/Godot-Instancing/godot_part3_2.png" alt="." title=".">
+<p>As can be seen, the ResourceLoader loads the scene with the attached script to a local variable.  This is then instanced ( using the “instance()” function) to the Player’s member “shipStats”.  “setStats()” is then called to set the values of the shipStats.  Finally this instance is added as a child to the player Node.</p>
+<p>The shipStats is held as a var for convienience.  This is not required.  It simply means it can be retrieved without having to go through the process of calling “get_child(child number)” when needing to reference it (as there could be a lot of child nodes).</p>
+<p>For the standard use of instancing, eg putting the Player scene in a level scene, check the official docs (<a href="http://docs.godotengine.org/en/stable/tutorials/step_by_step/instancing.html" target="_blank" rel="external">reference here</a>)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Autoload" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Autoload/" class="article-date">
+  <time datetime="2017-01-05T17:47:57.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Autoload/">Godot Engine - Autoload</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>One of the things that had me scratching my head about Godot was sharing information easily between scenes.  For example, if the player is in one scene (the overworld) and wants to move inside a building,  I still want to retain the player’s stats, inventory etc.</p>
+<p>One easy way to do this is with a global script – Singleton.</p>
+<img src="/blog.io/2017/01/05/Autoload/godot_part2_1.png" alt="." title=".">
+<p>Create a script that extends from Node, call it global(or whatever you want) and add it to the AutoLoad screen in Project Settings.  On startup of your game, this script will be loaded.  This is especially useful for changing scenes without need of some larger overarching scene in the game.</p>
+<img src="/blog.io/2017/01/05/Autoload/godot_part2_2.png" alt="." title=".">
+<p>The above image shows an example global script along with the means to switching between scenes. (official reference). Essentially, these functions to change scene can be accessed from any node.  So for a title screen, you can attach a script to a node to call “goto_scene” to switch to your first level scene. It also is executed in a way that will wait for any processing on the current scene to finish before destroying and then loading the new, desired scene.</p>
+<p>All the member variables will also be accssable, ie “PlayerDirection”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/blog.io/page/2/">2</a><a class="extend next" rel="next" href="/blog.io/page/2/">Next</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog.io/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Billboarding/">Monogame - Billboarding</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Simple2dcollision/">Monogame - Simple 2D Collision</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Fpsmouselook/">Monogame - First-person Camera mouse-look</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/">Monogame - Keyboard Input On-Release</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Fpscamera/">Monogame - Simple First-person Camera</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Various Developments<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog.io/projects" class="mobile-nav-link">Projects</a>
+  
+    <a href="/blog.io/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog.io/fancybox/jquery.fancybox.css">
+  <script src="/blog.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog.io/js/script.js"></script>
+
+  </div>
+</body>
+</html>

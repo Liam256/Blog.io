@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Monogame - Billboarding | Various Developments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="This is an incredibly easy thing to do using Monogame.  As an example of what is meant by billboarding, check the image below:
+
+The scene is in full 3D but instead of using 3D models, I opted for Spri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monogame - Billboarding">
+<meta property="og:url" content="https://liam256.github.io/blog.io/2017/01/05/Monogame-Billboarding/index.html">
+<meta property="og:site_name" content="Various Developments">
+<meta property="og:description" content="This is an incredibly easy thing to do using Monogame.  As an example of what is meant by billboarding, check the image below:
+
+The scene is in full 3D but instead of using 3D models, I opted for Spri">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Billboarding/monogame_billboarding1.png">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Billboarding/monogame_billboarding2.png">
+<meta property="og:updated_time" content="2017-01-06T00:20:40.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Monogame - Billboarding">
+<meta name="twitter:description" content="This is an incredibly easy thing to do using Monogame.  As an example of what is meant by billboarding, check the image below:
+
+The scene is in full 3D but instead of using 3D models, I opted for Spri">
+<meta name="twitter:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Billboarding/monogame_billboarding1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Various Developments" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog.io/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog.io/" id="logo">Various Developments</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog.io/">Home</a>
+        
+          <a class="main-nav-link" href="/blog.io/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog.io/projects">Projects</a>
+        
+          <a class="main-nav-link" href="/blog.io/about">About</a>
+        
+      </nav>
+    
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Monogame-Billboarding" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Billboarding/" class="article-date">
+  <time datetime="2017-01-05T23:51:47.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Monogame - Billboarding
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This is an incredibly easy thing to do using Monogame.  As an example of what is meant by billboarding, check the image below:</p>
+<img src="/blog.io/2017/01/05/Monogame-Billboarding/monogame_billboarding1.png" alt="." title=".">
+<p>The scene is in full 3D but instead of using 3D models, I opted for Sprites that always face the camera/player.  Used in old 3D games such as Wolfenstein it is nothing new.  It is not solely what this is used for either.  In larger 3D games, billboards can be used as substitutes for 3D models on objects that are far away.  Scenes with large rolling hills and forests upon them for an example.  A tree can be a billboard beyond a certain distance.</p>
+<p>Monogame provides a static function for creating a billboard matrix. Simply substitute your typical 3D world/model matrix for the billboard matrix and you have your 2D sprite in a 3D world.</p>
+<img src="/blog.io/2017/01/05/Monogame-Billboarding/monogame_billboarding2.png" alt="." title=".">
+<p>The above image shows the function used to draw the goblin in the previous image.  The rotation matrix is omitted and where you would use the usual 3D model matrix, use Matrix.CreateBillboard(ObjectPosition, PositionOfViewer/Camera,UpVector, DirectionOfViewer/Camera).</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog.io/2017/01/05/Monogame-Simple2dcollision/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Monogame - Simple 2D Collision</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog.io/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Billboarding/">Monogame - Billboarding</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Simple2dcollision/">Monogame - Simple 2D Collision</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Fpsmouselook/">Monogame - First-person Camera mouse-look</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/">Monogame - Keyboard Input On-Release</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Fpscamera/">Monogame - Simple First-person Camera</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Various Developments<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog.io/projects" class="mobile-nav-link">Projects</a>
+  
+    <a href="/blog.io/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog.io/fancybox/jquery.fancybox.css">
+  <script src="/blog.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog.io/js/script.js"></script>
+
+  </div>
+</body>
+</html>

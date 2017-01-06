@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Monogame - Content Pipeline (Sound effects) | Various Developments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little
+I was trying to added sound an didn’t think the format was supported.  I thoug">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monogame - Content Pipeline (Sound effects)">
+<meta property="og:url" content="https://liam256.github.io/blog.io/2017/01/05/Monogame-Contentpipeline/index.html">
+<meta property="og:site_name" content="Various Developments">
+<meta property="og:description" content="The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little
+I was trying to added sound an didn’t think the format was supported.  I thoug">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content1.png">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content2.png">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content3.png">
+<meta property="og:updated_time" content="2017-01-06T00:14:54.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Monogame - Content Pipeline (Sound effects)">
+<meta name="twitter:description" content="The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little
+I was trying to added sound an didn’t think the format was supported.  I thoug">
+<meta name="twitter:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Various Developments" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog.io/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog.io/" id="logo">Various Developments</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog.io/">Home</a>
+        
+          <a class="main-nav-link" href="/blog.io/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog.io/projects">Projects</a>
+        
+          <a class="main-nav-link" href="/blog.io/about">About</a>
+        
+      </nav>
+    
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Monogame-Contentpipeline" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Contentpipeline/" class="article-date">
+  <time datetime="2017-01-05T23:51:06.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Monogame - Content Pipeline (Sound effects)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little</p>
+<p>I was trying to added sound an didn’t think the format was supported.  I thought I had to use a .fx format but in fact the just simply wasn’t the case.</p>
+<p>Open the Content manager, write click and add existing item:</p>
+<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content1.png" alt="." title=".">
+<p>Once it is added, make sure to change the processor to sound effect, not song.  I kept getting an error that it was of the wrong object type when importing in my code.</p>
+<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content2.png" alt="." title=".">
+<p>Then its simply a case of calling the Content.Load:</p>
+<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content3.png" alt="." title=".">
+<p>Essentially make sure that the <t>  and string name is the same as in the content manager and it should all work no problems.  With SoundEffects, to use them you should really make an instance of them using the built-in CreateInstance() function.  This is also how you can manipulate an individual sound effect’s volume etc.</t></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog.io/2017/01/05/Monogame-Fpscamera/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Monogame - Simple First-person Camera
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog.io/2017/01/05/Monogame-Rendering3d/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Monogame - Rendering 3D with alpha blending and multiple render targets</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog.io/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Billboarding/">Monogame - Billboarding</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Simple2dcollision/">Monogame - Simple 2D Collision</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Fpsmouselook/">Monogame - First-person Camera mouse-look</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/">Monogame - Keyboard Input On-Release</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Fpscamera/">Monogame - Simple First-person Camera</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Various Developments<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog.io/projects" class="mobile-nav-link">Projects</a>
+  
+    <a href="/blog.io/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog.io/fancybox/jquery.fancybox.css">
+  <script src="/blog.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog.io/js/script.js"></script>
+
+  </div>
+</body>
+</html>

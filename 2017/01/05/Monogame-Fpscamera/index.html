@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Monogame - Simple First-person Camera | Various Developments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Full disclaimer: This is not how anyone should be using quaternions.  The dungeon-crawler game is simply a learning/prototype project and I needed to get this working.  This is just a means of using a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Monogame - Simple First-person Camera">
+<meta property="og:url" content="https://liam256.github.io/blog.io/2017/01/05/Monogame-Fpscamera/index.html">
+<meta property="og:site_name" content="Various Developments">
+<meta property="og:description" content="Full disclaimer: This is not how anyone should be using quaternions.  The dungeon-crawler game is simply a learning/prototype project and I needed to get this working.  This is just a means of using a">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Fpscamera/monogame_1.png">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Fpscamera/monogame_fps1.png">
+<meta property="og:updated_time" content="2017-01-06T00:11:09.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Monogame - Simple First-person Camera">
+<meta name="twitter:description" content="Full disclaimer: This is not how anyone should be using quaternions.  The dungeon-crawler game is simply a learning/prototype project and I needed to get this working.  This is just a means of using a">
+<meta name="twitter:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Fpscamera/monogame_1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Various Developments" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog.io/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog.io/" id="logo">Various Developments</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog.io/">Home</a>
+        
+          <a class="main-nav-link" href="/blog.io/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/blog.io/projects">Projects</a>
+        
+          <a class="main-nav-link" href="/blog.io/about">About</a>
+        
+      </nav>
+    
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Monogame-Fpscamera" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Monogame-Fpscamera/" class="article-date">
+  <time datetime="2017-01-05T23:51:15.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Monogame - Simple First-person Camera
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Full disclaimer: This is not how anyone should be using quaternions.  The dungeon-crawler game is simply a learning/prototype project and I needed to get this working.  This is just a means of using a basic understanding of how to manipulate quaternions to do what was needed.</p>
+<p>Quaternions…I kind of understand them but not really.  I understand them enough to achieve what I want done.  Eventually after studying them I’ll get it I’m sure but for now I’ll continue in ignorance.</p>
+<img src="/blog.io/2017/01/05/Monogame-Fpscamera/monogame_1.png" alt="." title=".">
+<p>A simple fps cam is suprisingly involved.  Originally for simplicity this game did not use mouse-look but when I realised that it was worth the effort I implemented it.</p>
+<img src="/blog.io/2017/01/05/Monogame-Fpscamera/monogame_fps1.png" alt="." title=".">
+<p>The above image shows my (probably wrong) camera class.  But it works.  Essentially I store to two rotations for looking up-down and left-right in seperate quaternions (lines 16-17).</p>
+<p>When the player wants to rotate in particular direction, this is simply added to the relevent quaternion representing an axis, using the functions on lines 32 and 38.</p>
+<p>Multiplying two quaternions essentially adds the rotations together.  What this means is that when before passing the camera matrix to the shader, you simply create a rotation matrix from the two quaternions multiplied together (line 29). You then multiply your view matrix by the rotation matrix and voila.</p>
+<p>The pitch angle (up-down) is stored to limit the rotation from going too far either above or below.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Monogame - Keyboard Input On-Release
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog.io/2017/01/05/Monogame-Contentpipeline/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Monogame - Content Pipeline (Sound effects)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog.io/archives/2017/01/">January 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Billboarding/">Monogame - Billboarding</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Simple2dcollision/">Monogame - Simple 2D Collision</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Fpsmouselook/">Monogame - First-person Camera mouse-look</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/">Monogame - Keyboard Input On-Release</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/05/Monogame-Fpscamera/">Monogame - Simple First-person Camera</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Various Developments<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/blog.io/projects" class="mobile-nav-link">Projects</a>
+  
+    <a href="/blog.io/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog.io/fancybox/jquery.fancybox.css">
+  <script src="/blog.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog.io/js/script.js"></script>
+
+  </div>
+</body>
+</html>
