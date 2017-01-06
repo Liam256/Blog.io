@@ -11,13 +11,13 @@
 <meta property="og:url" content="https://liam256.github.io/blog.io/2017/01/05/Godot-Instancing/index.html">
 <meta property="og:site_name" content="Various Developments">
 <meta property="og:description" content="One thing that became very obvious upon moving past basic game ideas was that creating instances of objects with certain parameters was not an obvious thing to do.  In standard OO programming, you hav">
-<meta property="og:image" content="https://liam256.github.io/blog.io/2017/01/05/Godot-Instancing/godot_part3_1.png">
-<meta property="og:image" content="https://liam256.github.io/blog.io/2017/01/05/Godot-Instancing/godot_part3_2.png">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Godot-Instancing/godot_part3_1.png">
+<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Godot-Instancing/godot_part3_2.png">
 <meta property="og:updated_time" content="2017-01-05T23:56:24.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Godot Engine - Parameterised Instancing">
 <meta name="twitter:description" content="One thing that became very obvious upon moving past basic game ideas was that creating instances of objects with certain parameters was not an obvious thing to do.  In standard OO programming, you hav">
-<meta name="twitter:image" content="https://liam256.github.io/blog.io/2017/01/05/Godot-Instancing/godot_part3_1.png">
+<meta name="twitter:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Godot-Instancing/godot_part3_1.png">
   
     <link rel="alternate" href="/atom.xml" title="Various Developments" type="application/atom+xml">
   
@@ -87,7 +87,7 @@
         <p>One thing that became very obvious upon moving past basic game ideas was that creating instances of objects with certain parameters was not an obvious thing to do.  In standard OO programming, you have a constructor and create your new object with the parameters you  do or don’t specify.</p>
 <p>In my game, I wanted to have a means of storing basic ship stats such as speed, weight etc. but finding how to do this without creating a node/script for every single ship type was putting me off using Godot.</p>
 <p>In essence its rather easy, the Autoload demo (here) shows you how in instancing the scene.</p>
-<img src="/2017/01/05/Godot-Instancing/godot_part3_1.png" alt="." title=".">
+<img src="/blog.io/2017/01/05/Godot-Instancing/godot_part3_1.png" alt="." title=".">
 <p>Simply create a function to set the parameters you require in a script.  In this case I wanted the player to hold the stats of their ship on their object/script.</p>
 <ol>
 <li>Create script with desired functions and data members</li>
@@ -96,7 +96,7 @@
 <li>In the _ready() function, load an instance of the scene containing your script and assign it to the member.</li>
 </ol>
 <p>Here is another image of the Player’s script to better demonstrate:</p>
-<img src="/2017/01/05/Godot-Instancing/godot_part3_2.png" alt="." title=".">
+<img src="/blog.io/2017/01/05/Godot-Instancing/godot_part3_2.png" alt="." title=".">
 <p>As can be seen, the ResourceLoader loads the scene with the attached script to a local variable.  This is then instanced ( using the “instance()” function) to the Player’s member “shipStats”.  “setStats()” is then called to set the values of the shipStats.  Finally this instance is added as a child to the player Node.</p>
 <p>The shipStats is held as a var for convienience.  This is not required.  It simply means it can be retrieved without having to go through the process of calling “get_child(child number)” when needing to reference it (as there could be a lot of child nodes).</p>
 <p>For the standard use of instancing, eg putting the Player scene in a level scene, check the official docs (<a href="http://docs.godotengine.org/en/stable/tutorials/step_by_step/instancing.html" target="_blank" rel="external">reference here</a>)</p>
@@ -114,7 +114,7 @@
 <nav id="article-nav">
   
     <a href="/blog.io/2017/01/05/Godot-Animation/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           Godot Engine - Simple Animation and instancing a Scene in another Scene
@@ -124,7 +124,7 @@
   
   
     <a href="/blog.io/2017/01/05/Autoload/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">Godot Engine - Autoload</div>
     </a>
   
@@ -157,9 +157,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog.io/2017/01/06/godotcollisions/">Godot Engine - Collisions</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/06/Nodes and Scenes/">Godot Engine - Scenes and Nodes</a>
+          </li>
         
           <li>
             <a href="/blog.io/2017/01/05/Monogame-Billboarding/">Monogame - Billboarding</a>
@@ -171,14 +179,6 @@
         
           <li>
             <a href="/blog.io/2017/01/05/Monogame-Fpsmouselook/">Monogame - First-person Camera mouse-look</a>
-          </li>
-        
-          <li>
-            <a href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/">Monogame - Keyboard Input On-Release</a>
-          </li>
-        
-          <li>
-            <a href="/blog.io/2017/01/05/Monogame-Fpscamera/">Monogame - Simple First-person Camera</a>
           </li>
         
       </ul>
@@ -194,7 +194,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Various Developments<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

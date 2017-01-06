@@ -3,25 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Monogame - Content Pipeline (Sound effects) | Various Developments</title>
+  <title>Godot Engine - Scenes and Nodes | Various Developments</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little
-I was trying to added sound an didn’t think the format was supported.  I thoug">
+  <meta name="description" content="So a few days ago I started using Godot Engine (available here).  I had been looking at various engines to speed up development on personal projects.  Having tried Unity and not fully gotten on board">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Monogame - Content Pipeline (Sound effects)">
-<meta property="og:url" content="https://liam256.github.io/blog.io/2017/01/05/Monogame-Contentpipeline/index.html">
+<meta property="og:title" content="Godot Engine - Scenes and Nodes">
+<meta property="og:url" content="https://liam256.github.io/blog.io/2017/01/06/Nodes and Scenes/index.html">
 <meta property="og:site_name" content="Various Developments">
-<meta property="og:description" content="The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little
-I was trying to added sound an didn’t think the format was supported.  I thoug">
-<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content1.png">
-<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content2.png">
-<meta property="og:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content3.png">
-<meta property="og:updated_time" content="2017-01-06T00:14:54.247Z">
+<meta property="og:description" content="So a few days ago I started using Godot Engine (available here).  I had been looking at various engines to speed up development on personal projects.  Having tried Unity and not fully gotten on board">
+<meta property="og:updated_time" content="2017-01-05T17:37:16.750Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Monogame - Content Pipeline (Sound effects)">
-<meta name="twitter:description" content="The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little
-I was trying to added sound an didn’t think the format was supported.  I thoug">
-<meta name="twitter:image" content="https://liam256.github.io/blog.io/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content1.png">
+<meta name="twitter:title" content="Godot Engine - Scenes and Nodes">
+<meta name="twitter:description" content="So a few days ago I started using Godot Engine (available here).  I had been looking at various engines to speed up development on personal projects.  Having tried Unity and not fully gotten on board">
   
     <link rel="alternate" href="/atom.xml" title="Various Developments" type="application/atom+xml">
   
@@ -66,10 +59,10 @@ I was trying to added sound an didn’t think the format was supported.  I thoug
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Monogame-Contentpipeline" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Nodes and Scenes" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog.io/2017/01/05/Monogame-Contentpipeline/" class="article-date">
-  <time datetime="2017-01-05T23:51:06.000Z" itemprop="datePublished">2017-01-05</time>
+    <a href="/blog.io/2017/01/06/Nodes and Scenes/" class="article-date">
+  <time datetime="2017-01-06T22:08:27.448Z" itemprop="datePublished">2017-01-06</time>
 </a>
     
   </div>
@@ -80,7 +73,7 @@ I was trying to added sound an didn’t think the format was supported.  I thoug
         
   
     <h1 class="article-title" itemprop="name">
-      Monogame - Content Pipeline (Sound effects)
+      Godot Engine - Scenes and Nodes
     </h1>
   
 
@@ -88,15 +81,11 @@ I was trying to added sound an didn’t think the format was supported.  I thoug
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>The content pipeline is very easy to use and so this is not a difficult thing to do, but still it did trip me up a little</p>
-<p>I was trying to added sound an didn’t think the format was supported.  I thought I had to use a .fx format but in fact the just simply wasn’t the case.</p>
-<p>Open the Content manager, write click and add existing item:</p>
-<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content1.png" alt="." title=".">
-<p>Once it is added, make sure to change the processor to sound effect, not song.  I kept getting an error that it was of the wrong object type when importing in my code.</p>
-<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content2.png" alt="." title=".">
-<p>Then its simply a case of calling the Content.Load:</p>
-<img src="/blog.io/2017/01/05/Monogame-Contentpipeline/monogame_content3.png" alt="." title=".">
-<p>Essentially make sure that the <t>  and string name is the same as in the content manager and it should all work no problems.  With SoundEffects, to use them you should really make an instance of them using the built-in CreateInstance() function.  This is also how you can manipulate an individual sound effect’s volume etc.</t></p>
+        <p>So a few days ago I started using Godot Engine (available here).  I had been looking at various engines to speed up development on personal projects.  Having tried Unity and not fully gotten on board with it, I wanted to see what else was about.</p>
+<p>Prototyping ideas, and doing so quickly, is really important.  Having many unfinished projects in C++, Java, C# etc I realised that those routes are fine.  I love programming, but there’s nothing worse than getting to a playable point and realising the idea is no fun.  I had a play around with Clickteam Fusion and is great for the job, but still frustrates me that I can’t just type/program what I want it to do.</p>
+<p>I’d heard great things about Godot and the only thing making me hesitate was the use of their own scripting language – GDScript.  Its a Python-line language…I simply thought “yuck”. But, three days into it I am absolutely loving it.</p>
+<p>This blog was created to document my learning and discoveries of Godot Engine.  I love it and sometimes its great to have your own resources for reference.</p>
+<p>Scenes and Nodes – Not a scene like in a film or Unity but, it can be.  The documentation is great for Godot and it does a very good job of educating users to its architecture.  Nodes are the base object/class of everything.  Nodes can be children or parents of other nodes.  A scene is required to have one root-node.  A scene can also be viewed as a node in some respects, as you can parent a scene to another scene as an instance.  Essentially, Godot engine gives great flexibility in letting the developer choose how to best organise these scenes and nodes.  (<a href="http://docs.godotengine.org/en/stable/tutorials/step_by_step/scenes_and_nodes.html" target="_blank" rel="external">reference here</a>)</p>
 
       
     </div>
@@ -110,19 +99,19 @@ I was trying to added sound an didn’t think the format was supported.  I thoug
     
 <nav id="article-nav">
   
-    <a href="/blog.io/2017/01/05/Monogame-Fpscamera/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/blog.io/2017/01/06/godotcollisions/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
-          Monogame - Simple First-person Camera
+          Godot Engine - Collisions
         
       </div>
     </a>
   
   
-    <a href="/blog.io/2017/01/05/Monogame-Rendering3d/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/blog.io/2017/01/05/Monogame-Billboarding/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">Monogame - Rendering 3D with alpha blending and multiple render targets</div>
+      <div class="article-nav-title">Monogame - Billboarding</div>
     </a>
   
 </nav>

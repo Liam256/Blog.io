@@ -57,10 +57,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-Nodes and Scenes" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Godot-Instancing" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/blog.io/2017/01/05/Nodes and Scenes/" class="article-date">
-  <time datetime="2017-01-05T17:27:31.321Z" itemprop="datePublished">2017-01-05</time>
+    <a href="/blog.io/2017/01/05/Godot-Instancing/" class="article-date">
+  <time datetime="2017-01-05T23:50:27.000Z" itemprop="datePublished">2017-01-05</time>
 </a>
     
   </div>
@@ -71,7 +71,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/blog.io/2017/01/05/Nodes and Scenes/">Godot Engine - Scenes and Nodes</a>
+      <a class="article-title" href="/blog.io/2017/01/05/Godot-Instancing/">Godot Engine - Parameterised Instancing</a>
     </h1>
   
 
@@ -79,11 +79,65 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>So a few days ago I started using Godot Engine (available here).  I had been looking at various engines to speed up development on personal projects.  Having tried Unity and not fully gotten on board with it, I wanted to see what else was about.</p>
-<p>Prototyping ideas, and doing so quickly, is really important.  Having many unfinished projects in C++, Java, C# etc I realised that those routes are fine.  I love programming, but there’s nothing worse than getting to a playable point and realising the idea is no fun.  I had a play around with Clickteam Fusion and is great for the job, but still frustrates me that I can’t just type/program what I want it to do.</p>
-<p>I’d heard great things about Godot and the only thing making me hesitate was the use of their own scripting language – GDScript.  Its a Python-line language…I simply thought “yuck”. But, three days into it I am absolutely loving it.</p>
-<p>This blog was created to document my learning and discoveries of Godot Engine.  I love it and sometimes its great to have your own resources for reference.</p>
-<p>Scenes and Nodes – Not a scene like in a film or Unity but, it can be.  The documentation is great for Godot and it does a very good job of educating users to its architecture.  Nodes are the base object/class of everything.  Nodes can be children or parents of other nodes.  A scene is required to have one root-node.  A scene can also be viewed as a node in some respects, as you can parent a scene to another scene as an instance.  Essentially, Godot engine gives great flexibility in letting the developer choose how to best organise these scenes and nodes.  (<a href="http://docs.godotengine.org/en/stable/tutorials/step_by_step/scenes_and_nodes.html" target="_blank" rel="external">reference here</a>)</p>
+        <p>One thing that became very obvious upon moving past basic game ideas was that creating instances of objects with certain parameters was not an obvious thing to do.  In standard OO programming, you have a constructor and create your new object with the parameters you  do or don’t specify.</p>
+<p>In my game, I wanted to have a means of storing basic ship stats such as speed, weight etc. but finding how to do this without creating a node/script for every single ship type was putting me off using Godot.</p>
+<p>In essence its rather easy, the Autoload demo (here) shows you how in instancing the scene.</p>
+<img src="/blog.io/2017/01/05/Godot-Instancing/godot_part3_1.png" alt="." title=".">
+<p>Simply create a function to set the parameters you require in a script.  In this case I wanted the player to hold the stats of their ship on their object/script.</p>
+<ol>
+<li>Create script with desired functions and data members</li>
+<li>Create a scene with a Node and attach the script to the node</li>
+<li>In the script where you want to hold the new type as a member create, a var to hold it</li>
+<li>In the _ready() function, load an instance of the scene containing your script and assign it to the member.</li>
+</ol>
+<p>Here is another image of the Player’s script to better demonstrate:</p>
+<img src="/blog.io/2017/01/05/Godot-Instancing/godot_part3_2.png" alt="." title=".">
+<p>As can be seen, the ResourceLoader loads the scene with the attached script to a local variable.  This is then instanced ( using the “instance()” function) to the Player’s member “shipStats”.  “setStats()” is then called to set the values of the shipStats.  Finally this instance is added as a child to the player Node.</p>
+<p>The shipStats is held as a var for convienience.  This is not required.  It simply means it can be retrieved without having to go through the process of calling “get_child(child number)” when needing to reference it (as there could be a lot of child nodes).</p>
+<p>For the standard use of instancing, eg putting the Player scene in a level scene, check the official docs (<a href="http://docs.godotengine.org/en/stable/tutorials/step_by_step/instancing.html" target="_blank" rel="external">reference here</a>)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Autoload" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/01/05/Autoload/" class="article-date">
+  <time datetime="2017-01-05T17:47:57.000Z" itemprop="datePublished">2017-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/01/05/Autoload/">Godot Engine - Autoload</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>One of the things that had me scratching my head about Godot was sharing information easily between scenes.  For example, if the player is in one scene (the overworld) and wants to move inside a building,  I still want to retain the player’s stats, inventory etc.</p>
+<p>One easy way to do this is with a global script – Singleton.</p>
+<img src="/blog.io/2017/01/05/Autoload/godot_part2_1.png" alt="." title=".">
+<p>Create a script that extends from Node, call it global(or whatever you want) and add it to the AutoLoad screen in Project Settings.  On startup of your game, this script will be loaded.  This is especially useful for changing scenes without need of some larger overarching scene in the game.</p>
+<img src="/blog.io/2017/01/05/Autoload/godot_part2_2.png" alt="." title=".">
+<p>The above image shows an example global script along with the means to switching between scenes. (official reference). Essentially, these functions to change scene can be accessed from any node.  So for a title screen, you can attach a script to a node to call “goto_scene” to switch to your first level scene. It also is executed in a way that will wait for any processing on the current scene to finish before destroying and then loading the new, desired scene.</p>
+<p>All the member variables will also be accssable, ie “PlayerDirection”</p>
 
       
     </div>
@@ -127,9 +181,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog.io/2017/01/06/godotcollisions/">Godot Engine - Collisions</a>
+          </li>
+        
+          <li>
+            <a href="/blog.io/2017/01/06/Nodes and Scenes/">Godot Engine - Scenes and Nodes</a>
+          </li>
         
           <li>
             <a href="/blog.io/2017/01/05/Monogame-Billboarding/">Monogame - Billboarding</a>
@@ -141,14 +203,6 @@
         
           <li>
             <a href="/blog.io/2017/01/05/Monogame-Fpsmouselook/">Monogame - First-person Camera mouse-look</a>
-          </li>
-        
-          <li>
-            <a href="/blog.io/2017/01/05/Monogame-Keyboardonrelease/">Monogame - Keyboard Input On-Release</a>
-          </li>
-        
-          <li>
-            <a href="/blog.io/2017/01/05/Monogame-Fpscamera/">Monogame - Simple First-person Camera</a>
           </li>
         
       </ul>
@@ -164,7 +218,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Various Developments<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
