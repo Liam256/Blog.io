@@ -57,6 +57,47 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-csdelegates" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog.io/2017/02/04/csdelegates/" class="article-date">
+  <time datetime="2017-02-04T22:57:31.000Z" itemprop="datePublished">2017-02-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog.io/2017/02/04/csdelegates/">C# Delegates</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Delegates provide a way of implementing callbacks much like function pointers in C/C++.<br>Simply create the delegate’s signature and (if you like) add it as a member to a class you wish to have a callback.</p>
+<img src="/blog.io/2017/02/04/csdelegates/delegate1.png" alt="." title=".">
+<p>Create a static function in which to refer to and then assign the static function to the delegate like so:</p>
+<img src="/blog.io/2017/02/04/csdelegates/delegate2.png" alt="." title=".">
+<p>Just make sure the signatures match (ie void, int , etc.)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-godotcollisions" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog.io/2017/01/06/godotcollisions/" class="article-date">
@@ -475,60 +516,6 @@
 
 
   
-    <article id="post-Godot-Animation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog.io/2017/01/05/Godot-Animation/" class="article-date">
-  <time datetime="2017-01-05T23:50:40.000Z" itemprop="datePublished">2017-01-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog.io/2017/01/05/Godot-Animation/">Godot Engine - Simple Animation and instancing a Scene in another Scene</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Getting basic animations into Godot Engine is simple and a joy.  It is stupidly straight forward.</p>
-<p>So first off create a new scene and add an AnimatedSprite node.  If you can’t find it, just do a search:</p>
-<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate1.png" alt="." title=".">
-<p>On the right hand-side where the inspector is you’ll see “Frames <null>”, click it and select New SpriteFrames.</null></p>
-<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate2.png" alt="." title=".">
-<p>This should open up an animation panel at the bottom.  First though you need import your Sprites/images.  Importing them as Textures is not required but unless you do, the images will be filtered.  If you’re doing pixel art, then you’ll want to import them like so:</p>
-<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate3.png" alt="." title=".">
-<p>You’ll then be greeted with this popup:</p>
-<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate4.png" alt="." title=".">
-<p>Make sure you select 2D Texture and make sure to disable “Filter (Magnifying)”.  Leave the rest as is.  If you want, create a new folder to write the Textures to, but having them in the root of your res:// is fine too.</p>
-<p>Once this is done, simply select and drag the textures from the FileSystem browser into the Animation Frame at the bottom of the screen:</p>
-<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate5.png" alt="." title=".">
-<p>The image above shows that they will be part of an animation called “rotate”(red). You can create more animations by simply clicking the paper icon below animations (green).  The name given in the red box is how you can refer to different animations in your scripts.</p>
-<p>So now that the new animated node/scene has been created its just a matter of putting it into the main game scene. To do this, simply navigate back to the scene in which you want to put your new animated sprite/node/scene:</p>
-<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate6.png" alt="." title=".">
-<p>Clicking on the exisiting node you want to parent the instance node to, then click the icon highlighted in yellow in the scene tab.  Select the scene and press okay.</p>
-<img src="/blog.io/2017/01/05/Godot-Animation/godot_animate7.png" alt="." title=".">
-<p>The newly animated scene has now been instanced in the level with the player object.  The yellow box shows where you can toggle the playing of the animation in the scene view.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 
   <nav id="page-nav">
@@ -550,7 +537,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog.io/archives/2017/01/">January 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog.io/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog.io/archives/2017/01/">January 2017</a></li></ul>
     </div>
   </div>
 
@@ -561,6 +548,10 @@
     <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog.io/2017/02/04/csdelegates/">C# Delegates</a>
+          </li>
         
           <li>
             <a href="/blog.io/2017/01/06/godotcollisions/">Godot Engine - Collisions</a>
@@ -576,10 +567,6 @@
         
           <li>
             <a href="/blog.io/2017/01/05/Monogame-Simple2dcollision/">Monogame - Simple 2D Collision</a>
-          </li>
-        
-          <li>
-            <a href="/blog.io/2017/01/05/Monogame-Fpsmouselook/">Monogame - First-person Camera mouse-look</a>
           </li>
         
       </ul>
